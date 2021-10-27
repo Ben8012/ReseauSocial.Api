@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectionTool\ConnectionTool.csproj" />
+    <ProjectReference Include="..\Tools.Cryptography\Tools.Cryptography.csproj" />
+  </ItemGroup>
+
+</Project>

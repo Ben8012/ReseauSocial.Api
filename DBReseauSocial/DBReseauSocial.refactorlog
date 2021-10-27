@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="87fe5500-f099-41db-98ac-8631a1f9f7bd" ChangeDateTime="10/21/2021 13:06:36">
+    <Property Name="ElementName" Value="[dbo].[FK_Blocked_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Blocked]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Blocked_Users]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="20c836f5-d08f-447c-a59e-ba7340467bd4" ChangeDateTime="10/27/2021 08:01:19">
+    <Property Name="ElementName" Value="[dbo].[Messages].[GetDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Messages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[RecieveDate]" />
+  </Operation>
+</Operations>
