@@ -19,5 +19,7 @@ namespace DAL.Models
 
         public int UserId { get; set; }
 
+        public DateTime Date { get; set; }
+
     }
 }

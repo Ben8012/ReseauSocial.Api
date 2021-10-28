@@ -6,9 +6,9 @@
 	@UserId INT
 AS
 BEGIN
-	INSERT INTO [Articles] (Title, Content, CommentOk, OnLigne, UserId)
+	INSERT INTO [Articles] (Title, Content, CommentOk, OnLigne, UserId, [Date])
 	VALUES 
-	(@Title, @Content, @CommentOk, @OnLigne, @UserId);
+	(@Title, @Content, @CommentOk, @OnLigne, @UserId, GETDATE());
 
 	RETURN 0;
 END

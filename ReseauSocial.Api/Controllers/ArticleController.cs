@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ReseauSocial.Api.Mappers;
+using BLL.Models;
+using ReseauSocial.Api.Models;
 
 namespace ReseauSocial.Api.Controllers
 {
@@ -42,7 +44,7 @@ namespace ReseauSocial.Api.Controllers
             return Ok();
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -64,16 +66,16 @@ namespace ReseauSocial.Api.Controllers
         }
 
         [HttpPost("SignalArticle")]
-        public IActionResult SignalArticle(int articleId, int userId)
+        public IActionResult SignalArticle(SignalArticle article)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            _articleBll.SignalArticle( articleId, userId);
+            _articleBll.SignalArticle( article.ArticleId, article.UserId);
             return Ok();
         }
 
-        [HttpPost("Update")]
+        [HttpPost("Update/{id}")]
         public IActionResult Update(int id, AddArticle article)
         {
             if (!ModelState.IsValid)
@@ -81,6 +83,29 @@ namespace ReseauSocial.Api.Controllers
 
             _articleBll.Update(id, article.ArticleApiToArticleBll());
             return Ok();
+        }
+
+        [HttpGet("GetAllArticle")]
+        public IActionResult GetAllArticle()
+        {
+            IEnumerable<ArticleBll> listArticles = _articleBll.GetAllArticle();
+            return Ok(listArticles);
+        }
+
+
+        [HttpGet("GetArticleById/{id}")]
+        public IActionResult GetArticleById(int id)
+        {
+            ArticleBll article = _articleBll.GetArticleById(id);
+            return Ok(article);
+
+        }
+
+        [HttpGet("GetArticleByUserId/{id}")]
+        public IActionResult GetArticleByUserId(int id)
+        {
+            IEnumerable<ArticleBll> listArticles = _articleBll.GetArticleByUserId(id);
+            return Ok(listArticles);
         }
 
     }

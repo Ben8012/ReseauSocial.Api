@@ -45,7 +45,23 @@ namespace DAL.Mappers
                 SendDate = (DateTime)dataRecord["SendDate"],
             };
         }
-        
+
+        #endregion
+
+        #region Article
+        internal static ArticleDal DBToArticleDal(this IDataRecord dataRecord)
+        {
+            return new ArticleDal()
+            {
+                Id = (int)dataRecord["Id"],
+                Title = dataRecord["Title"].ToString(),
+                Content =dataRecord["Content"].ToString(),
+                CommentOk = (bool)dataRecord["CommentOk"],
+                OnLigne = (bool)dataRecord["OnLigne"],
+                UserId = (int)dataRecord["UserId"],
+                Date = (DateTime)dataRecord["Date"]
+            };
+        }
         #endregion
     }
 }

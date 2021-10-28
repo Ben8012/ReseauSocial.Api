@@ -59,6 +59,7 @@ namespace BLL.Mappers
                 UserId = entity.UserId,
                 CommentOk = entity.CommentOk,
                 OnLigne = entity.OnLigne,
+                Date = entity.Date
             };
         }
 
@@ -74,6 +75,7 @@ namespace BLL.Mappers
                 UserId = entity.UserId,
                 CommentOk = entity.CommentOk,
                 OnLigne = entity.OnLigne,
+                Date = entity.Date
             };
         }
 

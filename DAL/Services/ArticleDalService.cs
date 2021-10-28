@@ -3,6 +3,7 @@ using DAL.Interfaces;
 using DAL.Models;
 using System;
 using System.Collections.Generic;
+using DAL.Mappers;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,5 +83,28 @@ namespace DAL.Services
             _connection.ExecuteNonQuery(command);
         }
 
+        public IEnumerable<ArticleDal> GetAllArticle()
+        {
+            Command command = new Command("SELECT * FROM [Articles]", false);
+            return _connection.ExecuteReader(command,DR => DR.DBToArticleDal());
+        }
+
+        public IEnumerable<ArticleDal> GetArticleByUserId(int userId)
+        {
+
+            Command command = new Command("SELECT * FROM [Articles] WHERE UserId = @UserId", false);
+            command.AddParameter("UserId", userId);
+
+            return _connection.ExecuteReader(command, DR => DR.DBToArticleDal());
+        }
+
+        public ArticleDal GetArticleById(int articleId)
+        {
+
+            Command command = new Command("SELECT * FROM [Articles] WHERE Id = @Id", false);
+            command.AddParameter("Id", articleId);
+
+            return _connection.ExecuteReader(command, DR => DR.DBToArticleDal()).SingleOrDefault();
+        }
     }
 }

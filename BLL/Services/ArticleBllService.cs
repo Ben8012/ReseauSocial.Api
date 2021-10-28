@@ -52,5 +52,19 @@ namespace BLL.Services
             _articleDal.CommentArticle( articleId, userId, message);
         }
 
+        public IEnumerable<ArticleBll> GetAllArticle()
+        {
+            return _articleDal.GetAllArticle().Select(a => a.ArticleDalToArticleBll());
+        }
+
+        public IEnumerable<ArticleBll> GetArticleByUserId(int userId)
+        {
+            return _articleDal.GetArticleByUserId( userId).Select(a => a.ArticleDalToArticleBll());
+        }
+
+        public ArticleBll GetArticleById(int articleId)
+        {
+            return _articleDal.GetArticleById( articleId).ArticleDalToArticleBll();
+        }
     }
 }

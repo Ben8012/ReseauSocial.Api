@@ -40,7 +40,7 @@ namespace ReseauSocial.Api.Mappers
                 Content = entity.Content,
                 UserId = entity.UserId,
                 CommentOk = entity.CommentOk,
-                OnLigne = entity.OnLigne,
+                OnLigne = entity.OnLigne             
             };
         }
 

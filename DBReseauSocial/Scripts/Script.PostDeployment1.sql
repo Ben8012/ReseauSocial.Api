@@ -37,12 +37,12 @@ SET	@i = 0
 
 WHILE @i < 10 
 BEGIN
-	INSERT INTO [Articles] ( Title, Content, CommentOk, OnLigne, UserId )
+	INSERT INTO [Articles] ( Title, Content, CommentOk, OnLigne, UserId, [Date] )
 	VALUES
-	( CONCAT('Article', 4*@i+1), CONCAT('Content',4*@i+1),1 ,0 , 1),
-	( CONCAT('Article', 4*@i+2), CONCAT('Content',4*@i+2),0 ,1 , 2),
-	( CONCAT('Article', 4*@i+3), CONCAT('Content',4*@i+3),0 ,0 , 3),
-	( CONCAT('Article', 4*@i+4), CONCAT('Content',4*@i+4),1 ,1 , 4)
+	( CONCAT('Article', 4*@i+1), CONCAT('Content',4*@i+1),1 ,0 , 1,GETDATE()),
+	( CONCAT('Article', 4*@i+2), CONCAT('Content',4*@i+2),0 ,1 , 2,GETDATE()),
+	( CONCAT('Article', 4*@i+3), CONCAT('Content',4*@i+3),0 ,0 , 3,GETDATE()),
+	( CONCAT('Article', 4*@i+4), CONCAT('Content',4*@i+4),1 ,1 , 4,GETDATE())
 
 	SET @i = @i + 1
 

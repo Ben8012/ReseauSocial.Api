@@ -14,7 +14,7 @@ BEGIN
 	BEGIN
 
 	UPDATE  [Articles] 
-	SET Title = @Title, Content = @Content, CommentOk = @CommentOk, OnLigne = @OnLigne, UserId = @UserId  
+	SET Title = @Title, Content = @Content, CommentOk = @CommentOk, OnLigne = @OnLigne, UserId = @UserId, [Date] = GETDATE() 
 	WHERE Id = @Id 
 	RETURN 0
 

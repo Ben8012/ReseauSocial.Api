@@ -93,7 +93,7 @@
     <Build Include="Programmability\Procedures\Article\BEN_SP_CommentArticle.sql" />
     <Build Include="Tables\Articles.sql" />
     <Build Include="Tables\SignalArticle.sql" />
-    <Build Include="Tables\Blocked.sql" />
+    <Build Include="Tables\BlockArticle.sql" />
     <Build Include="Tables\CommentArticle.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_Status.sql" />
     <Build Include="Vues\View_Users.sql" />

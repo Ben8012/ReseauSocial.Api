@@ -1,4 +1,5 @@
 ﻿using BLL.Models;
+using System.Collections.Generic;
 
 namespace BLL.Interfaces
 {
@@ -10,6 +11,12 @@ namespace BLL.Interfaces
         void Insert(ArticleBll article);
         void SignalArticle(int articleId, int userId);
         void Update(int id, ArticleBll article);
+
+        IEnumerable<ArticleBll> GetAllArticle();
+
+        IEnumerable<ArticleBll> GetArticleByUserId(int userId);
+
+        ArticleBll GetArticleById(int articleId);
 
     }
 }

@@ -18,6 +18,8 @@ namespace BLL.Models
         public bool OnLigne { get; set; }
 
         public int UserId { get; set; }
+        public DateTime Date { get; set; }
+
 
     }
 }

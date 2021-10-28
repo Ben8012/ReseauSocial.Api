@@ -4,6 +4,7 @@ AS
 BEGIN
 
 	Delete From [Articles] Where Id = @Id
+
 	RETURN 0
 
 END

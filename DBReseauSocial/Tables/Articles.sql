@@ -6,6 +6,7 @@
 	[CommentOk] BIT,
 	[OnLigne] BIT,
 	[UserId] INT, 
+	[Date] DATETIME,
 	CONSTRAINT [FK_Articles_Users] FOREIGN KEY (UserId) REFERENCES [Users](Id),
 	CONSTRAINT [PK_Articles] PRIMARY KEY ([Id]),
 
