@@ -28,8 +28,7 @@ namespace ReseauSocial.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            _messageBll.CreateMessage(message.MessageApiToMessageBll());
-            return Ok();
+            return Ok(_messageBll.CreateMessage(message.MessageApiToMessageBll()));
         }
 
         [HttpPost("ReciveMessage")]
@@ -82,13 +81,13 @@ namespace ReseauSocial.Api.Controllers
             return Ok(_messageBll.GetMessageBetweenToUsers(message.UserId1, message.UserId2));
         }
 
-        [HttpPost("GetMessageById/{MessageId}")]
-        public IActionResult GetMessageById(int MessageId)
+        [HttpGet("GetMessageById/{id}")]
+        public IActionResult GetMessageById(int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(_messageBll.GetMessageById(MessageId));
+            return Ok(_messageBll.GetMessageById(id));
         }
 
         [HttpPost("GetMessageFromUser")]

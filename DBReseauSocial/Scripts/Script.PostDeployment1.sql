@@ -51,15 +51,23 @@ END
 /*MESSAGES*/
 
 SET @i = 0
-WHILE @i < 10 
+WHILE @i < 5 
 BEGIN
 
 	INSERT INTO [Messages] ( Content, UserSend, UserGet, SendDate)
 	VALUES
-	( CONCAT('test', 4*@i+1 ), 1 , 4 , GETDATE()),
-	( CONCAT('test', 4*@i+2 ), 2 , 3 , GETDATE()),
-	( CONCAT('test', 4*@i+3 ), 3 , 2 , GETDATE()),
-	( CONCAT('test', 4*@i+4 ), 4 , 1 , GETDATE())
+	( CONCAT('test', 12*@i+1 ), 1 , 2 , GETDATE()),
+	( CONCAT('test', 12*@i+2 ), 1 , 3 , GETDATE()),
+	( CONCAT('test', 12*@i+3 ), 1 , 4 , GETDATE()),
+	( CONCAT('test', 12*@i+4 ), 2 , 1 , GETDATE()),
+	( CONCAT('test', 12*@i+5 ), 2 , 3 , GETDATE()),
+	( CONCAT('test', 12*@i+6 ), 2 , 4 , GETDATE()),
+	( CONCAT('test', 12*@i+7 ), 3 , 1 , GETDATE()),
+	( CONCAT('test', 12*@i+8 ), 3 , 2 , GETDATE()),
+	( CONCAT('test', 12*@i+9 ), 3 , 4 , GETDATE()),
+	( CONCAT('test', 12*@i+10 ), 4 , 1 , GETDATE()),
+	( CONCAT('test', 12*@i+11 ), 4 , 2 , GETDATE()),
+	( CONCAT('test', 12*@i+12 ), 4 , 3 , GETDATE())
 	SET @i = @i +1
 
 END

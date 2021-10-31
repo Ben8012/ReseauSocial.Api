@@ -21,14 +21,14 @@ namespace DAL.Services
             _connection = connection;
         }
 
-        public void CreateMessage(MessageDal message)
+        public int CreateMessage(MessageDal message)
         {
             Command command = new Command("BEN_SP_CreateMessage", true);
             command.AddParameter("Content", message.Content);
             command.AddParameter("UserSend", message.UserSend);
             command.AddParameter("UserGet", message.UserGet);
 
-            _connection.ExecuteNonQuery(command);
+            return (int)_connection.ExecuteScalar(command);
         }
 
         public void UpdateMessage(MessageDal message)
