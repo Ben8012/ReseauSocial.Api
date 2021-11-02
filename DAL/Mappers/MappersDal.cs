@@ -63,5 +63,20 @@ namespace DAL.Mappers
             };
         }
         #endregion
+
+        #region Comment
+        internal static CommentDal DBToCommentDal(this IDataRecord dataRecord)
+        {
+            return new CommentDal()
+            {
+                Id = (int)dataRecord["Id"],
+                ArticleId = (int)dataRecord["ArticleId"],
+                UserId = (int)dataRecord["UserId"],
+                Message = (string)dataRecord["Message"],
+                Date = (DateTime)dataRecord["Date"]
+              
+            };
+        }
+        #endregion
     }
 }

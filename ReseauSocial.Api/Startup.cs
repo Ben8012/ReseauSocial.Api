@@ -47,6 +47,14 @@ namespace ReseauSocial.Api
             services.AddScoped<IMessageDal, MessageDalService>();
             services.AddScoped<IMessageBll, MessageBllService>();
 
+            //injection comment
+            services.AddScoped<ICommentDal, CommentDalService>();
+            services.AddScoped<ICommentBll, CommentBllService>();
+
+            //injection follower
+            services.AddScoped<IFollowerDal, FollowerDalService>();
+            services.AddScoped<IFollowerBll, FollowerBllService>();
+
 
             services.AddSwaggerGen(c =>
             {

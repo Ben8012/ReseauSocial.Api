@@ -71,3 +71,22 @@ BEGIN
 	SET @i = @i +1
 
 END
+
+/*FOLLOWERS*/
+
+
+SET @i = 0
+WHILE @i < 5 
+BEGIN
+
+	INSERT INTO [Followers] ( [FollowedId],[FollowerId], [Date])
+	VALUES
+	( @i+1 , @i+2,GETDATE()),
+	( @i+1 , @i+3,GETDATE()),
+	( @i+1 , @i+4,GETDATE())
+
+	SET @i = @i +1
+
+END
+
+	

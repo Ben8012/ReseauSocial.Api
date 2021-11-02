@@ -66,6 +66,8 @@
     <Folder Include="Programmability\Procedures\Article" />
     <Folder Include="Vues" />
     <Folder Include="Programmability\Procedures\Message" />
+    <Folder Include="Programmability\Procedures\Comment" />
+    <Folder Include="Programmability\Procedures\Follower" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Users.sql" />
@@ -105,6 +107,12 @@
     <Build Include="Programmability\Procedures\Message\BEN_SP_GetMessageFromUser.sql" />
     <Build Include="Programmability\Procedures\Message\BEN_SP_UpdateMessage.sql" />
     <Build Include="Programmability\Procedures\Message\BEN_SP_DeleteMessage.sql" />
+    <Build Include="Programmability\Procedures\Comment\BEN_SP_AddComment.sql" />
+    <Build Include="Tables\Followers.sql" />
+    <Build Include="Programmability\Procedures\Follower\BEN_SP_Follow.sql" />
+    <Build Include="Programmability\Procedures\Follower\BEN_SP_UnFollow.sql" />
+    <Build Include="Vues\View_Followers.sql" />
+    <Build Include="Vues\View_Followed.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DBReseauSocial.publish.xml" />
