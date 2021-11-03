@@ -1,8 +1,11 @@
 ﻿using BLL.Interfaces;
+using BLL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReseauSocial.Api.Mappers;
 using ReseauSocial.Api.Models;
+using ReseauSocial.Api.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +15,19 @@ namespace ReseauSocial.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("isConnected")]
     public class UserController : ControllerBase
     {
         private IUserBll _userBll;
+        private ITokenManager _token;
 
-        public UserController(IUserBll userBll)
+        public UserController(IUserBll userBll, ITokenManager token)
         {
             _userBll = userBll;
+            _token = token;
         }
 
-
+        [AllowAnonymous]
         [HttpPost("register")]
         public IActionResult Register(RegisterUser form)
         {
@@ -93,16 +99,35 @@ namespace ReseauSocial.Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpPost("EmailExists")]
         public IActionResult EmailExists(string email)
         {
             return Ok(_userBll.EmailExists(email));
         }
 
+        [AllowAnonymous]
         [HttpPost("Login")]
         public IActionResult Login(LoginUser loginUser)
         {
-            return Ok(_userBll.Login(loginUser.LoginUserBllToLoginUserDal()));
+            UserBll user = _userBll.Login(loginUser.LoginUserBllToLoginUserDal());
+
+            if(user is null)
+            {
+                return BadRequest("user is nul after login");
+            }
+            UserWithToken userWithToken = new UserWithToken()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                IsAdmin = user.IsAdmin,
+                Passwd = null,
+                Token = _token.GenerateJWTUser(user)
+            };
+            return Ok(userWithToken);
+
         }
 
 
@@ -113,6 +138,7 @@ namespace ReseauSocial.Api.Controllers
             return Ok(_userBll.GetStatus(userId)) ;
         }
 
+        [AllowAnonymous]
         [HttpGet("GetUser/{userId}")]
         public IActionResult GetUser(int userId)
         {

@@ -18,7 +18,7 @@ SET IDENTITY_INSERT [StatusAccount] OFF;
 DECLARE 
 	@i INT = 0
 
-WHILE @i < 10  
+WHILE @i < 20  
 BEGIN
 	INSERT INTO  [Users] ([LastName], [FirstName],[Email],[IsAdmin],[Passwd] )
 	VALUES
@@ -81,9 +81,26 @@ BEGIN
 
 	INSERT INTO [Followers] ( [FollowedId],[FollowerId], [Date])
 	VALUES
-	( @i+1 , @i+2,GETDATE()),
-	( @i+1 , @i+3,GETDATE()),
-	( @i+1 , @i+4,GETDATE())
+	( 3*@i+1 , 3*@i+2,GETDATE()),
+	( 3*@i+1 , 3*@i+3,GETDATE()),
+	( 3*@i+1 , 3*@i+4,GETDATE())
+
+	SET @i = @i +1
+
+END
+
+/*BLACKLIST*/
+
+
+SET @i = 0
+WHILE @i < 5 
+BEGIN
+
+	INSERT INTO [Blacklist] ( [BlacklisterId],[BlacklistedId], [Date])
+	VALUES
+	( 3*@i+2 , 3*@i+3, GETDATE()),
+	( 3*@i+3 , 3*@i+4, GETDATE()),
+	( 3*@i+4 , 3*@i+5, GETDATE())
 
 	SET @i = @i +1
 

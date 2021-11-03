@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ReseauSocial.Api.Mappers;
 using BLL.Models;
 using ReseauSocial.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ReseauSocial.Api.Controllers
 {
@@ -85,6 +86,7 @@ namespace ReseauSocial.Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet("GetAllArticle")]
         public IActionResult GetAllArticle()
         {

@@ -1,8 +1,10 @@
-﻿namespace ReseauSocial.Api.Tools
+﻿using BLL.Models;
+
+namespace ReseauSocial.Api.Tools
 {
     public interface ITokenManager
     {
-       /* string GenerateJWTClient(ClientBll client);
-        string GenerateJWTDevelopper(DevelopperBll developper);*/
+        string GenerateJWTUser(UserBll client);
+      
     }
 }

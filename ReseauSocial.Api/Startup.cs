@@ -3,6 +3,7 @@ using BLL.Services;
 using ConnectionTool;
 using DAL.Interfaces;
 using DAL.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,10 +12,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ReseauSocial.Api.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ReseauSocial.Api
@@ -34,6 +38,9 @@ namespace ReseauSocial.Api
              services.AddSingleton<IConnection, Connection>(sp => new Connection(Configuration.GetConnectionString("Tour")));
 
             services.AddControllers();
+
+            //injection token
+            services.AddScoped<ITokenManager, TokenManager>();
 
             //injection user
             services.AddScoped<IUserDal, UserDalService>();
@@ -55,12 +62,16 @@ namespace ReseauSocial.Api
             services.AddScoped<IFollowerDal, FollowerDalService>();
             services.AddScoped<IFollowerBll, FollowerBllService>();
 
+            //injection blacklist
+            services.AddScoped<IBlacklistDal, BlacklistDalService>();
+            services.AddScoped<IBlacklistBll, BlacklistBllService>();
+
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ReseauSocial.Api", Version = "v1" });
 
-               /* c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n                       Enter 'Bearer' [space] and then your token in the text input below.                      \r\n\r\nExample: 'Bearer 12345abcdef'",
                     Name = "Authorization",
@@ -84,13 +95,13 @@ namespace ReseauSocial.Api
                              },
                              new List<string>()
                            }
-                         });*/
+                         });
 
 
             });
 
 
-           /* services.AddAuthorization(option =>
+            services.AddAuthorization(option =>
             {
                 option.AddPolicy("isConnected", policy => policy.RequireAuthenticatedUser());
             });
@@ -109,7 +120,7 @@ namespace ReseauSocial.Api
                         ValidateAudience = true,
                         ValidAudience = TokenManager.myAudience
                     };
-                });*/
+                });
 
         }
 
@@ -127,7 +138,7 @@ namespace ReseauSocial.Api
 
             app.UseRouting();
 
-            /*app.UseAuthentication();*/
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

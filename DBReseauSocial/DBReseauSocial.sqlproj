@@ -68,6 +68,7 @@
     <Folder Include="Programmability\Procedures\Message" />
     <Folder Include="Programmability\Procedures\Comment" />
     <Folder Include="Programmability\Procedures\Follower" />
+    <Folder Include="Programmability\Procedures\Blacklist" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Users.sql" />
@@ -113,6 +114,11 @@
     <Build Include="Programmability\Procedures\Follower\BEN_SP_UnFollow.sql" />
     <Build Include="Vues\View_Followers.sql" />
     <Build Include="Vues\View_Followed.sql" />
+    <Build Include="Tables\Blacklist.sql" />
+    <Build Include="Programmability\Procedures\Blacklist\BEN_SP_Blacklist.sql" />
+    <Build Include="Programmability\Procedures\Blacklist\BEN_SP_UnBlacklist.sql" />
+    <Build Include="Vues\View_Blacklister.sql" />
+    <Build Include="Vues\View_Blacklisted.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DBReseauSocial.publish.xml" />
