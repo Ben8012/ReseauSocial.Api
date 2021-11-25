@@ -5,7 +5,7 @@ namespace DAL.Interfaces
 {
     public interface IArticleDal
     {
-        void BlockArticle(int articleId, int AdminId, string message);
+        void BlockArticleAdmin(int articleId, int AdminId, string message);
         void CommentArticle(int articleId, int userId, string message);
         void Delete(int id);
         void Insert(ArticleDal article);
@@ -17,5 +17,22 @@ namespace DAL.Interfaces
         IEnumerable<ArticleDal> GetArticleByUserId(int userId);
 
         ArticleDal GetArticleById(int articleId);
+
+        bool IsArticleBlock(int articleId);
+
+
+        bool IsSignalArticle(int articleId);
+
+
+        void UnBlockArticleAdmin(int articleId, int AdminId);
+
+        bool IsSignalByUser(int articleId, int UserId);
+
+        void UnSignalArticle(int articleId, int UserId);
+
+        void UnSignalArticleAdmin(int articleId, int UserId);
+
+
+
     }
 }

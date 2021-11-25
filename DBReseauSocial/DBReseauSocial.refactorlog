@@ -14,4 +14,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[RecieveDate]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="1a13c202-ff52-4ad9-899d-e15db299ca23" ChangeDateTime="11/24/2021 09:16:19">
+    <Property Name="ElementName" Value="[dbo].[AK_SignalArticle_Column]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[SignalArticle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[AK_SignalArticle_ArticleId_UserId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cfc5994a-e6a8-41e3-9d6c-e690aefac447" ChangeDateTime="11/24/2021 09:19:59">
+    <Property Name="ElementName" Value="[dbo].[AK_BlockArticle_Column]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[BlockArticle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[AK_BlockArticle_ArticleId_AdminId]" />
+  </Operation>
 </Operations>

@@ -1,4 +1,6 @@
-﻿using BLL.Models;
+﻿using BLL.Interfaces;
+using BLL.Models;
+using DAL.Interfaces;
 using DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -65,7 +67,7 @@ namespace BLL.Mappers
 
 
 
-        internal static ArticleBll ArticleDalToArticleBll(this ArticleDal entity)
+        internal static ArticleBll ArticleDalToArticleBll(this ArticleDal entity, IArticleDal articleService)
         {
             return new ArticleBll()
             {
@@ -75,7 +77,13 @@ namespace BLL.Mappers
                 UserId = entity.UserId,
                 CommentOk = entity.CommentOk,
                 OnLigne = entity.OnLigne,
-                Date = entity.Date
+                Date = entity.Date,
+                StatusArticle = 
+                    articleService.IsSignalArticle(entity.Id)?
+                    StatusArticleEnumBll.Signal
+                    : articleService.IsArticleBlock(entity.Id)?
+                    StatusArticleEnumBll.Block
+                    : StatusArticleEnumBll.Normal
             };
         }
 

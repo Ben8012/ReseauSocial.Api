@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[BEN_SP_DeleteStatus]
+﻿CREATE PROCEDURE [dbo].[BEN_SP_DeleteStatusAdmin]
 	@ChangedUserId int,
 	@EditorUserId int
 	
@@ -19,7 +19,7 @@ BEGIN
 		INSERT INTO [StatusChange] ([EditorUserId], [ChangedUserId], [StatusId], [StartDate], [EndDate] ) 
 		VALUES ( @EditorUserId, @ChangedUserId, 4 , GETDATE(), NULL)
 
-		UPDATE [Users] SET [LastName]= '', [FirstName]= '', [IsAdmin]= 0, [Passwd]= dbo.BEN_SF_GetHashPasswd(N'')
+		UPDATE [Users] SET [LastName]= 'anonyme', [FirstName]= 'anonyme', [IsAdmin]= 0, [Passwd]= dbo.BEN_SF_GetHashPasswd(N'')
 		WHERE [Id] = @ChangedUserId
 
 	END

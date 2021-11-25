@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[BEN_SP_BlockedStatus]
+﻿CREATE PROCEDURE [dbo].[BEN_SP_UnBlockedStatusAdmin]
 	@ChangedUserId int,
 	@EditorUserId int
 	
@@ -10,14 +10,14 @@ BEGIN
 	FROM [StatusChange] 
 	WHERE [ChangedUserId] = @ChangedUserId AND [EndDate] IS NULL;
 
-	IF( @CurrentStatus IN (1, 2, 5, 6)  )
+	IF( @CurrentStatus IN (3)  )
 	BEGIN
 
 		UPDATE [StatusChange] SET [EndDate] = GETDATE() 
 		WHERE [ChangedUserId] = @ChangedUserId AND [EndDate] IS NULL;
 
 		INSERT INTO [StatusChange] ([EditorUserId], [ChangedUserId], [StatusId], [StartDate]) 
-		VALUES ( @EditorUserId, @ChangedUserId, 3 , GETDATE())
+		VALUES ( @EditorUserId, @ChangedUserId, 1 , GETDATE())
 	END
 
 RETURN 0

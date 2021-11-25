@@ -42,9 +42,9 @@ namespace BLL.Services
             _articleDal.SignalArticle(articleId, userId);
         }
 
-        public void BlockArticle(int articleId, int AdminId, string message)
+        public void BlockArticleAdmin(int articleId, int AdminId, string message)
         {
-            _articleDal.BlockArticle( articleId,  AdminId,  message);
+            _articleDal.BlockArticleAdmin( articleId,  AdminId,  message);
         }
 
         public void CommentArticle(int articleId, int userId, string message)
@@ -54,17 +54,47 @@ namespace BLL.Services
 
         public IEnumerable<ArticleBll> GetAllArticle()
         {
-            return _articleDal.GetAllArticle().Select(a => a.ArticleDalToArticleBll());
+            return _articleDal.GetAllArticle().Select(a => a.ArticleDalToArticleBll(_articleDal));
         }
 
         public IEnumerable<ArticleBll> GetArticleByUserId(int userId)
         {
-            return _articleDal.GetArticleByUserId( userId).Select(a => a.ArticleDalToArticleBll());
+            return _articleDal.GetArticleByUserId( userId).Select(a => a.ArticleDalToArticleBll(_articleDal));
         }
 
         public ArticleBll GetArticleById(int articleId)
         {
-            return _articleDal.GetArticleById( articleId).ArticleDalToArticleBll();
+            return _articleDal.GetArticleById( articleId).ArticleDalToArticleBll(_articleDal);
+        }
+
+        public bool IsArticleBlock(int articleId)
+        {
+            return _articleDal.IsArticleBlock(articleId);
+        }
+
+        public bool IsSignalArticle(int articleId)
+        {
+            return _articleDal.IsSignalArticle( articleId);
+        }
+
+        public void UnBlockArticleAdmin(int articleId, int AdminId)
+        {
+            _articleDal.UnBlockArticleAdmin( articleId,  AdminId);
+        }
+
+        public bool IsSignalByUser(int articleId, int UserId)
+        {
+            return _articleDal.IsSignalByUser(articleId, UserId);
+        }
+
+        public void UnSignalArticle(int articleId, int UserId)
+        {
+             _articleDal.UnSignalArticle(articleId, UserId);
+        }
+
+        public void UnSignalArticleAdmin(int articleId, int UserId)
+        {
+            _articleDal.UnSignalArticleAdmin(articleId, UserId);
         }
     }
 }

@@ -17,8 +17,13 @@ namespace DAL.Interfaces
 
         void ReactivateStatus(int ChangedUserId);
         void DeactivateStatus(int ChangUserId);
-        void BlockedStatus(int ChangedUserId, int EditorUserId);
-        void DeleteStatus(int ChangedUserId, int EditorUserId);
+        void BlockedStatusAdmin(int ChangedUserId, int EditorUserId);
+        void DeleteStatusAdmin(int ChangedUserId, int EditorUserId);
+        void ReactivateStatusAdmin(int ChangedUserId, int EditorUserId);
+        void UnBlockedStatusAdmin(int ChangedUserId, int EditorUserId);
+
+
+       
         void AskActivateStatus(int ChangedUserId);
         void AskDeleteStatus(int ChangedUserId);
         bool EmailExists(string email);

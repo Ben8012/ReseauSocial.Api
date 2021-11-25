@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[BEN_SP_BlockArticle]
+﻿CREATE PROCEDURE [dbo].[BEN_SP_BlockArticleAdmin]
 	@ArticleId INT,
 	@AdminId INT,
 	@Message NVARCHAR(MAX)
@@ -10,7 +10,7 @@ BEGIN
 
 	BEGIN
 
-		INSERT INTO [Blocked] (ArticleId, AdminId, [Message], [Date])
+		INSERT INTO [BlockArticle] (ArticleId, AdminId, [Message], [Date])
 		VALUES 
 		(@ArticleId, @AdminId, @Message, GETDATE())
 	END

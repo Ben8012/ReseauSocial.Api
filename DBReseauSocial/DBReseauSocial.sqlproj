@@ -80,9 +80,9 @@
     <Build Include="Programmability\Functions\BEN_SF_GetHashPasswd.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_AskActivateStatus.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_AskDeleteStatus.sql" />
-    <Build Include="Programmability\Procedures\User\BEN_SP_BlockedStatus.sql" />
+    <Build Include="Programmability\Procedures\User\BEN_SP_BlockedStatusAdmin.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_DeactivateStatus.sql" />
-    <Build Include="Programmability\Procedures\User\BEN_SP_DeleteStatus.sql" />
+    <Build Include="Programmability\Procedures\User\BEN_SP_DeleteStatusAdmin.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_DeleteUser.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_LoginUser.sql" />
     <Build Include="Programmability\Procedures\User\BEN_SP_ReactivateStatus.sql" />
@@ -92,7 +92,7 @@
     <Build Include="Programmability\Procedures\Article\BEN_SP_UpdateArticle.sql" />
     <Build Include="Programmability\Procedures\Article\BEN_SP_DeleteArticle.sql" />
     <Build Include="Programmability\Procedures\Article\BEN_SP_SignalArticle.sql" />
-    <Build Include="Programmability\Procedures\Article\BEN_SP_BlockArticle.sql" />
+    <Build Include="Programmability\Procedures\Article\BEN_SP_BlockArticleAdmin.sql" />
     <Build Include="Programmability\Procedures\Article\BEN_SP_CommentArticle.sql" />
     <Build Include="Tables\Articles.sql" />
     <Build Include="Tables\SignalArticle.sql" />
@@ -119,6 +119,12 @@
     <Build Include="Programmability\Procedures\Blacklist\BEN_SP_UnBlacklist.sql" />
     <Build Include="Vues\View_Blacklister.sql" />
     <Build Include="Vues\View_Blacklisted.sql" />
+    <Build Include="Programmability\Procedures\User\BEN_SP_UnBlockedStatusAdmin.sql" />
+    <Build Include="Programmability\Procedures\User\BEN_SP_ReactivateStatusAdmin.sql" />
+    <Build Include="Programmability\Procedures\Article\BEN_SP_UnBlockArticleAdmin.sql" />
+    <Build Include="Programmability\Procedures\Article\BEN_SP_UnSignalArticle.sql" />
+    <Build Include="Programmability\Procedures\Article\BEN_SP_UnSignalArticleAdmin.sql" />
+    <Build Include="Programmability\Triggers\BEN_TR_InsertBlockArticle.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DBReseauSocial.publish.xml" />

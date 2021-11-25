@@ -44,14 +44,14 @@ namespace BLL.Services
             _userDal.DeactivateStatus(ChangUserId);
         }
 
-        public void BlockedStatus(int ChangedUserId, int EditorUserId)
+        public void BlockedStatusAdmin(int ChangedUserId, int EditorUserId)
         {
-            _userDal.BlockedStatus(ChangedUserId, EditorUserId);
+            _userDal.BlockedStatusAdmin(ChangedUserId, EditorUserId);
         }
 
-        public void DeleteStatus(int ChangedUserId, int EditorUserId)
+        public void DeleteStatusAdmin(int ChangedUserId, int EditorUserId)
         {
-            _userDal.DeleteStatus(ChangedUserId, EditorUserId);
+            _userDal.DeleteStatusAdmin(ChangedUserId, EditorUserId);
         }
 
         public void AskActivateStatus(int ChangedUserId)
@@ -87,6 +87,17 @@ namespace BLL.Services
         public IEnumerable<UserBll> GetAllUsers()
         {
             return _userDal.GetAllUsers().Select(u => u.DalUserToBllUser());
+        }
+
+        public void UnBlockedStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+
+            _userDal.UnBlockedStatusAdmin(ChangedUserId, EditorUserId);
+        }
+
+        public void ReactivateStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            _userDal.ReactivateStatusAdmin(ChangedUserId, EditorUserId);
         }
     }
 }

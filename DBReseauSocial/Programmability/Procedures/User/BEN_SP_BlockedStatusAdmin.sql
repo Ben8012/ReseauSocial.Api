@@ -1,22 +1,23 @@
-﻿CREATE PROCEDURE [dbo].[BEN_SP_ReactivateStatus]
-	@ChangedUserId int
+﻿CREATE PROCEDURE [dbo].[BEN_SP_BlockedStatusAdmin]
+	@ChangedUserId int,
+	@EditorUserId int
 	
 AS
 BEGIN
+
 	DECLARE @CurrentStatus INT
 	SELECT @CurrentStatus = [StatusId] 
 	FROM [StatusChange] 
 	WHERE [ChangedUserId] = @ChangedUserId AND [EndDate] IS NULL;
 
-	IF( @CurrentStatus IN (2,6))
+	IF( @CurrentStatus IN (1, 2, 5, 6)  )
 	BEGIN
 
 		UPDATE [StatusChange] SET [EndDate] = GETDATE() 
 		WHERE [ChangedUserId] = @ChangedUserId AND [EndDate] IS NULL;
 
 		INSERT INTO [StatusChange] ([EditorUserId], [ChangedUserId], [StatusId], [StartDate]) 
-		VALUES ( @ChangedUserId, @ChangedUserId, 1 , GETDATE())
-
+		VALUES ( @EditorUserId, @ChangedUserId, 3 , GETDATE())
 	END
 
 RETURN 0

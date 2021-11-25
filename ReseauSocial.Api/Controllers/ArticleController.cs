@@ -25,15 +25,72 @@ namespace ReseauSocial.Api.Controllers
         }
 
 
-        [HttpPost("BlockArticle")]
-        public IActionResult BlockArticle(int articleId, int AdminId, string message)
+        [HttpPost("BlockArticleAdmin")]
+        public IActionResult BlockArticleAdmin(ArticleBlocked form )
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            _articleBll.BlockArticle( articleId, AdminId, message);
+            _articleBll.BlockArticleAdmin( form.ArticleId, form.AdminId, form.Message);
             return Ok();
         }
+
+
+        [HttpGet("UnBlockArticleAdmin/{articleId}/{AdminId}")]
+        public IActionResult UnBlockArticleAdmin(int articleId, int AdminId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            _articleBll.UnBlockArticleAdmin(articleId, AdminId);
+            return Ok();
+        }
+
+        [HttpGet("IsArticleBlock/{articleId}")]
+        public IActionResult IsArticleBlock(int articleId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            return Ok(_articleBll.IsArticleBlock(articleId));
+        }
+
+        [HttpGet("IsSignalArticle/{articleId}")]
+        public IActionResult IsSignalArticle(int articleId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            return Ok(_articleBll.IsSignalArticle(articleId));
+        }
+
+        [HttpGet("IsSignalByUser/{articleId}/{userId}")]
+        public IActionResult IsSignalByUser(int articleId, int userId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            return Ok(_articleBll.IsSignalByUser(articleId,userId));
+        }
+
+        [HttpGet("UnSignalArticle/{articleId}/{userId}")]
+        public IActionResult UnSignalArticle(int articleId, int userId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            _articleBll.UnSignalArticle(articleId, userId);
+            return Ok();
+        }
+
+        [HttpGet("UnSignalArticleAdmin/{articleId}/{userId}")]
+        public IActionResult UnSignalArticleAdmin(int articleId, int userId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            _articleBll.UnSignalArticleAdmin(articleId, userId);
+            return Ok();
+        }
+
 
         [HttpPost("CommentArticle")]
         public IActionResult CommentArticle(int articleId, int userId, string message)

@@ -57,42 +57,30 @@ namespace ReseauSocial.Api.Controllers
             return Ok();
         }
 
-        [HttpPost("ReactivateStatus")]
+        [HttpGet("ReactivateStatus/{ChangedUserId}")]
         public IActionResult ReactivateStatus(int ChangedUserId)
         {
             _userBll.ReactivateStatus( ChangedUserId);
             return Ok();
         }
 
-        [HttpPost("DeactivateStatus")]
-        public IActionResult DeactivateStatus(int ChangUserId)
+        [HttpGet("DeactivateStatus/{ChangedUserId}")]
+        public IActionResult DeactivateStatus(int ChangedUserId)
         {
-            _userBll.DeactivateStatus( ChangUserId);
+            _userBll.DeactivateStatus(ChangedUserId);
             return Ok();
         }
+     
+       
 
-        [HttpPost("BlockedStatus")]
-        public IActionResult BlockedStatus(int ChangedUserId, int EditorUserId)
-        {
-            _userBll.BlockedStatus(ChangedUserId, EditorUserId);
-            return Ok();
-        }
-
-        [HttpPost("DeleteStatus")]
-        public IActionResult DeleteStatus(int ChangedUserId, int EditorUserId)
-        {
-            _userBll.DeleteStatus( ChangedUserId,  EditorUserId);
-            return Ok();
-        }
-
-        [HttpPost("AskActivateStatus/{ChangedUserId}")]
+        [HttpGet("AskActivateStatus/{ChangedUserId}")]
         public IActionResult AskActivateStatus(int ChangedUserId)
         {
             _userBll.AskActivateStatus( ChangedUserId);
             return Ok();
         }
 
-        [HttpPost("AskDeleteStatus/{ChangedUserId}")]
+        [HttpGet("AskDeleteStatus/{ChangedUserId}")]
         public IActionResult AskDeleteStatus(int ChangedUserId)
         {
             _userBll.AskDeleteStatus( ChangedUserId);
@@ -151,6 +139,34 @@ namespace ReseauSocial.Api.Controllers
             return Ok(_userBll.GetAllUsers());
         }
 
+        [HttpGet("BlockedStatusAdmin/{ChangedUserId}/{EditorUserId}")]
+        public IActionResult BlockedStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            _userBll.BlockedStatusAdmin(ChangedUserId, EditorUserId);
+            return Ok();
+        }
+
+        [HttpGet("DeleteStatusAdmin/{ChangedUserId}/{EditorUserId}")]
+        public IActionResult DeleteStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            _userBll.DeleteStatusAdmin(ChangedUserId, EditorUserId);
+            return Ok();
+        }
+
+        [HttpGet("UnBlockedStatusAdmin/{ChangedUserId}/{EditorUserId}")]
+        public IActionResult UnBlockedStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            _userBll.UnBlockedStatusAdmin(ChangedUserId, EditorUserId);
+            return Ok();
+        }
+
+        [HttpGet("ReactivateStatusAdmin/{ChangedUserId}/{EditorUserId}")]
+        public IActionResult ReactivateStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            _userBll.ReactivateStatusAdmin(ChangedUserId, EditorUserId);
+            return Ok();
+        }
+
+
     }
 }
-

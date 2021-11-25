@@ -20,6 +20,8 @@ namespace BLL.Models
         public int UserId { get; set; }
         public DateTime Date { get; set; }
 
+        public StatusArticleEnumBll StatusArticle { get; set; }
+
 
     }
 }

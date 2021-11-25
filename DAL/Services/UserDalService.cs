@@ -76,22 +76,9 @@ namespace DAL.Services
             _connection.ExecuteNonQuery(command);
         }
 
-        public void BlockedStatus(int ChangedUserId, int EditorUserId)
-        {
+       
 
-            Command command = new Command("BEN_SP_BlockedStatus", true);
-            command.AddParameter("ChangedUserId", ChangedUserId);
-            command.AddParameter("EditorUserId", EditorUserId);
-            _connection.ExecuteNonQuery(command);
-        }
-
-        public void DeleteStatus(int ChangedUserId, int EditorUserId)
-        {
-            Command command = new Command("BEN_SP_DeleteStatus", true);
-            command.AddParameter("ChangedUserId", ChangedUserId);
-            command.AddParameter("EditorUserId", EditorUserId);
-            _connection.ExecuteNonQuery(command);
-        }
+     
 
         public void AskActivateStatus(int ChangedUserId)
         {
@@ -149,6 +136,42 @@ namespace DAL.Services
             return _connection.ExecuteReader(command, dr => dr.DBToUserDal());
         }
 
-       
+        //admin
+
+        public void BlockedStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+
+            Command command = new Command("BEN_SP_BlockedStatusAdmin", true);
+            command.AddParameter("ChangedUserId", ChangedUserId);
+            command.AddParameter("EditorUserId", EditorUserId);
+            _connection.ExecuteNonQuery(command);
+        }
+
+        public void UnBlockedStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+
+            Command command = new Command("BEN_SP_UnBlockedStatusAdmin", true);
+            command.AddParameter("ChangedUserId", ChangedUserId);
+            command.AddParameter("EditorUserId", EditorUserId);
+            _connection.ExecuteNonQuery(command);
+        }
+
+        public void ReactivateStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            Command command = new Command("BEN_SP_ReactivateStatusAdmin", true);
+            command.AddParameter("ChangedUserId", ChangedUserId);
+            command.AddParameter("EditorUserId", EditorUserId);
+            _connection.ExecuteNonQuery(command);
+        }
+
+        public void DeleteStatusAdmin(int ChangedUserId, int EditorUserId)
+        {
+            Command command = new Command("BEN_SP_DeleteStatusAdmin", true);
+            command.AddParameter("ChangedUserId", ChangedUserId);
+            command.AddParameter("EditorUserId", EditorUserId);
+            _connection.ExecuteNonQuery(command);
+        }
+
+
     }
 }

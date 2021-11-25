@@ -63,15 +63,17 @@ namespace DAL.Services
             _connection.ExecuteNonQuery(command);
         }
 
-        public void BlockArticle(int articleId, int AdminId, string message)
+        public void BlockArticleAdmin(int articleId, int AdminId, string message)
         {
-            Command command = new Command("BEN_SP_BlockArticle", true);
+            Command command = new Command("BEN_SP_BlockArticleAdmin", true);
             command.AddParameter("ArticleId", articleId);
             command.AddParameter("AdminId", AdminId);
             command.AddParameter("Message", message);
 
             _connection.ExecuteNonQuery(command);
         }
+
+    
 
         public void CommentArticle(int articleId, int userId, string message)
         {
@@ -105,6 +107,58 @@ namespace DAL.Services
             command.AddParameter("Id", articleId);
 
             return _connection.ExecuteReader(command, DR => DR.DBToArticleDal()).SingleOrDefault();
+        }
+
+        public bool IsArticleBlock(int articleId)
+        {
+            Command command = new Command("SELECT COUNT(*) FROM [BlockArticle] WHERE ArticleId= @ArticleId ", false );
+            command.AddParameter("ArticleId", articleId);
+
+            return (int)_connection.ExecuteScalar(command)>0;
+        }
+
+        public bool IsSignalArticle(int articleId)
+        {
+            Command command = new Command("SELECT COUNT(*) FROM [SignalArticle] WHERE ArticleId= @ArticleId ", false);
+            command.AddParameter("ArticleId", articleId);
+
+            return (int)_connection.ExecuteScalar(command) > 0;
+        }
+
+        public void UnBlockArticleAdmin(int articleId, int AdminId)
+        {
+            Command command = new Command("BEN_SP_UnBlockArticleAdmin", true);
+            command.AddParameter("ArticleId", articleId);
+            command.AddParameter("AdminId", AdminId);
+            
+            _connection.ExecuteNonQuery(command);
+        }
+
+        public bool IsSignalByUser(int articleId, int UserId)
+        {
+            Command command = new Command("SELECT COUNT(*) FROM [SignalArticle] WHERE ArticleId= @ArticleId AND UserId=@UserId", false);
+            command.AddParameter("ArticleId", articleId);
+            command.AddParameter("UserId", UserId);
+
+            return (int)_connection.ExecuteScalar(command) == 1;
+        }
+
+        public void UnSignalArticle(int articleId, int UserId)
+        {
+            Command command = new Command("BEN_SP_UnSignalArticle", true);
+            command.AddParameter("ArticleId", articleId);
+            command.AddParameter("UserId", UserId);
+
+            _connection.ExecuteNonQuery(command);
+        }
+
+        public void UnSignalArticleAdmin(int articleId, int UserId)
+        {
+            Command command = new Command("BEN_SP_UnSignalArticleAdmin", true);
+            command.AddParameter("ArticleId", articleId);
+            command.AddParameter("UserId", UserId);
+
+            _connection.ExecuteNonQuery(command);
         }
     }
 }
