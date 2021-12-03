@@ -109,8 +109,8 @@ namespace DAL.Services
             Command command = new Command("BEN_SP_LoginUser", true);
             command.AddParameter("Email", loginUser.Email);
             command.AddParameter("Passwd", loginUser.Passwd);
-
-            return _connection.ExecuteReader(command, dr => dr.DBToUserDal()).SingleOrDefault();
+            UserDal user = _connection.ExecuteReader(command, dr => dr.DBToUserDal()).SingleOrDefault();
+            return user;
         }
 
         public StatusDal GetStatus(int userId)

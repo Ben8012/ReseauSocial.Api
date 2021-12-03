@@ -89,16 +89,16 @@ namespace ReseauSocial.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("EmailExists")]
-        public IActionResult EmailExists(string email)
+        public IActionResult EmailExists(EmailExist form)
         {
-            return Ok(_userBll.EmailExists(email));
+            return Ok(_userBll.EmailExists(form.Email));
         }
 
         [AllowAnonymous]
         [HttpPost("Login")]
         public IActionResult Login(LoginUser loginUser)
         {
-            UserBll user = _userBll.Login(loginUser.LoginUserBllToLoginUserDal());
+            UserBll? user = _userBll.Login(loginUser.LoginUserBllToLoginUserDal());
 
             if(user is null)
             {

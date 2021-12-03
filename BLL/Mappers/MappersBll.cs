@@ -36,7 +36,7 @@ namespace BLL.Mappers
                 FirstName = entity.FirstName,
                 Email = entity.Email,
                 IsAdmin = entity.IsAdmin,
-                Passwd = entity.Passwd,
+               
             };
         }
 

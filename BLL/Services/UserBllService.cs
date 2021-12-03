@@ -71,7 +71,7 @@ namespace BLL.Services
 
         public UserBll Login(LoginUserBll loginUser)
         {
-            return _userDal.Login(loginUser.LoginUserBllToLoginUserDal()).DalUserToBllUser();
+            return _userDal.Login(loginUser.LoginUserBllToLoginUserDal())?.DalUserToBllUser();
         }
 
         public StatusBll GetStatus(int userId)

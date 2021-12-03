@@ -52,7 +52,7 @@ namespace ReseauSocial.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(_messageBll.GetMessageBetweenToUsers(message.UserId1, message.UserId2));
+            return Ok(_messageBll.GetMessageBetweenToUsers(message.UserId1, message.UserId2).ToList());
         }
 
 
